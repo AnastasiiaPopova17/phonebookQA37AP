@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Regression" verbose="1">
+    <test name="Regression">
+        <classes>
+            <class name="tests.DeleteContactTests">
+                <methods>
+                    <exclude name=".*Existing.*"></exclude>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
