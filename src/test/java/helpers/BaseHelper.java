@@ -5,6 +5,8 @@ import org.openqa.selenium.*;
 
 import java.io.File;
 import java.io.IOException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.google.common.io.Files;
 import java.util.List;
 
@@ -14,6 +16,7 @@ public class BaseHelper {
     public BaseHelper(WebDriver driver) {
         this.driver = driver;
     }
+    static Logger logger = LoggerFactory.getLogger(BaseHelper.class);
 
     // find elemnt / s
 
@@ -77,15 +80,15 @@ public class BaseHelper {
     }
 
     public String takeScreenshot() {
+        logger.info("start screenshot");
         File tmp = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         File screenshot = new File("screenshots/screen" + System.currentTimeMillis()
-        + ".png");
+                +".png");
         try {
             Files.copy(tmp, screenshot);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         return screenshot.getPath();
-
     }
 }

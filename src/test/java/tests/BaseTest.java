@@ -21,7 +21,7 @@ public class BaseTest {
             new ApplicationManager(System
                     .getProperty("browser", Browser.CHROME.browserName()));
 
-    final static Logger logger = LoggerFactory.getLogger(BaseTest.class);
+    static Logger logger = LoggerFactory.getLogger(BaseTest.class);
     UserDTO user = new UserDTO().setEmail("proba@gmail.com").setPassword("1234Qwer!");
 
     @BeforeSuite
@@ -45,8 +45,7 @@ public class BaseTest {
     @AfterMethod
     public void stopTest(ITestResult result) {
         if (result.isSuccess()) {
-            logger.info("PASSED" + result.getMethod().getMethodName()
-                    + "Screenshot: " + app.getUserHelper().takeScreenshot());
+            logger.info("PASSED" + result.getMethod().getMethodName());
         } else {
             logger.error("FAILED " + result.getMethod().getMethodName()
             + "Screenshot: " + app.getUserHelper().takeScreenshot());
